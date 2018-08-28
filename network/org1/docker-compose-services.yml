@@ -21,7 +21,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == brizo-desktop
+                    - node.hostname == Sys1
         image: hyperledger/fabric-ca:x86_64-1.1.0
         hostname: ca.org1.example.com
         environment:
@@ -44,7 +44,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == brizo-desktop
+                    - node.hostname == Sys1
         image: hyperledger/fabric-tools:x86_64-1.1.0
         tty: true
         hostname: cli
@@ -66,7 +66,8 @@ services:
         command: /bin/bash
         volumes:
             - /var/run/:/host/var/run/
-            - /var/mynetwork/chaincode:/opt/gopath/src/github.com/chaincode
+            - /var/mynetwork/chaincode_simple:/opt/gopath/src/github.com/chaincode_simple
+            - /var/mynetwork/chaincode_smallbank:/opt/gopath/src/github.com/chaincode_smallbank
             - /var/mynetwork/fabric-src/hyperledger/fabric:/opt/gopath/src/github.com/hyperledger/fabric
             - /var/mynetwork/certs/crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto
             - /var/mynetwork/certs/config:/var/hyperledger/config
@@ -84,7 +85,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == brizo-desktop
+                    - node.hostname == Sys1
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb0_org1
         networks:
@@ -99,7 +100,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == brizo-desktop
+                    - node.hostname == Sys1
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb1_org1
         networks:
