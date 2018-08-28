@@ -21,17 +21,17 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == intel-sawtooth
+                    - node.hostname == brizo-desktop
         image: hyperledger/fabric-ca:x86_64-1.1.0
         hostname: ca.org2.example.com
         environment:
             - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
             - FABRIC_CA_SERVER_CA_NAME=ca_org2
             - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org2.example.com-cert.pem
-            - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/50415243691563f5071fec926fd998e37cd4f7670511cee352e6e14c70321e63_sk
+            - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/4e12d28667dde243c5ab06335e24e266974b1d865adebcff4ced9f15ced60467_sk
         ports:
             - "8054:7054"   
-        command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+        command: sh -c 'fabric-ca-server start --ca.certfile $FABRIC_CA_SERVER_CA_CERTFILE --ca.keyfile $FABRIC_CA_SERVER_CA_KEYFILE -b admin:adminpw -d'
         volumes:
             - /var/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
 
@@ -44,7 +44,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == intel-sawtooth
+                    - node.hostname == brizo-desktop
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb0_org2
         networks:
@@ -59,7 +59,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == intel-sawtooth
+                    - node.hostname == brizo-desktop
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb1_org2
         networks:
