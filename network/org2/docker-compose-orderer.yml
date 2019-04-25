@@ -17,7 +17,7 @@ services:
         max_attempts: 3
       placement:
         constraints:
-          - node.hostname == ip-172-31-19-78
+          - node.hostname == ip-172-31-22-243
     image: hyperledger/fabric-orderer:1.4.0
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/orderer
     command: orderer

@@ -17,7 +17,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == ip-172-31-21-108
+                    - node.hostname == ip-172-31-22-243
         image: hyperledger/fabric-peer:1.4.0
         hostname: peer0.org1.example.com
         environment:
@@ -69,7 +69,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == ip-172-31-24-190
+                    - node.hostname == ip-172-31-22-243
         image: hyperledger/fabric-peer:1.4.0
         hostname: peer1.org1.example.com
         environment:
