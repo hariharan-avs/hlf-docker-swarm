@@ -21,7 +21,7 @@ services:
                 max_attempts: 3
             placement:
                 constraints:
-                    - node.hostname == ip-172-31-19-78
+                    - node.hostname == ip-172-31-27-157
         image: hyperledger/fabric-ca:1.4.0
         hostname: ca.org2.example.com
         environment:
